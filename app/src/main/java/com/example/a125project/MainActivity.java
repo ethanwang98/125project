@@ -8,6 +8,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,6 +25,15 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+            }
+        });
+
+        Button startBtn = findViewById(R.id.startButton); // deals with the start button
+        startBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // insert code that runs the question activities; loads either scale question
+                // or yes/no question; this code happens when the start button is clicked
             }
         });
     }
@@ -50,3 +60,10 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 }
+
+// I used the following links to learn about Android Studio; if you need a better understanding of
+// what I did, use the following links:
+// https://www.youtube.com/watch?v=fwSJ1OkK304 (deals with radio buttons and radio groups)
+// https://www.youtube.com/watch?v=-igAiudpBng (general, slightly outdated)
+// https://www.youtube.com/watch?v=dFlPARW5IX8
+// https://www.youtube.com/watch?v=6ow3L39Wxmg
