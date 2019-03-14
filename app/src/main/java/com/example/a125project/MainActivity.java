@@ -1,5 +1,6 @@
 package com.example.a125project;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -12,13 +13,13 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -28,12 +29,28 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //sets first question information
+        questionInfo.setQuestionInfo(questionInfo.questionCount);
+
         Button startBtn = findViewById(R.id.startButton); // deals with the start button
         startBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // insert code that runs the question activities; loads either scale question
-                // or yes/no question; this code happens when the start button is clicked
+                //intent is determined by what the next question type is, if there is one
+                Intent intent;
+                if(questionInfo.type == questionInfo.questionType.YESNO){
+                    intent = new Intent(getApplicationContext(), YesNoActivity.class);
+                }
+                else if(questionInfo.type == questionInfo.questionType.SCALE){
+                    intent = new Intent(getApplicationContext(), ScaleQuestionActivity.class);
+                }
+                else if(questionInfo.type == questionInfo.questionType.SPINNER){
+                    intent = new Intent(getApplicationContext(), DropDownMenuActivity.class);
+                }
+                else{
+                    intent = new Intent(getApplicationContext(), ResultActivity.class);
+                }
+                startActivity(intent);
             }
         });
     }

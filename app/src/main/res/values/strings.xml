@@ -4,4 +4,38 @@
     <string name="title_activity_result">ResultActivity</string>
     <string name="title_activity_scale_question">ScaleQuestionActivity</string>
     <string name="title_activity_yes_no">YesNoActivity</string>
+    <string name="title_activity_drop_down_menu">DropDownMenuActivity</string>
+
+    <string-array name="spinDefault">
+        <item>List</item>
+    </string-array>
+    
+    <string-array name="heights">
+        <item>4\'10\" (147cm) </item>
+        <item>4\'11\" (150cm) </item>
+        <item>5\'0\" (152cm) </item>
+        <item>5\'1\" (155cm) </item>
+        <item>5\'2\" (157cm) </item>
+        <item>5\'3\" (160cm) </item>
+        <item>5\'4\" (163cm) </item>
+        <item>5\'5\" (165cm) </item>
+        <item>5\'6\" (168cm) </item>
+        <item>5\'7\" (170cm) </item>
+        <item>5\'8\" (173cm) </item>
+        <item>5\'9\" (175cm) </item>
+        <item>5\'10\" (178cm) </item>
+        <item>5\'11\" (180cm) </item>
+        <item>6\'0\" (183cm) </item>
+        <item>6\'1\" (185cm) </item>
+        <item>6\'2\" (188cm) </item>
+        <item>6\'3\" (191cm) </item>
+        <item>6\'4\" (193cm) </item>
+    </string-array>
+
+    <string-array name="weights">
+        <item>Less than 128 lbs. (58kg)</item>
+        <item>128-152 lbs. (58-68kg)</item>
+        <item>153-203 lbs. (69-91kg)</item>
+        <item>204+ lbs. (92kg)</item>
+    </string-array>
 </resources>

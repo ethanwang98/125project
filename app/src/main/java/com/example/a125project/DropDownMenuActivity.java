@@ -8,82 +8,45 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Spinner;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
-public class ScaleQuestionActivity extends AppCompatActivity {
+public class DropDownMenuActivity extends AppCompatActivity {
 
-    RadioGroup radioGroup;
-    RadioButton radioButton;
+    Spinner menu;
     TextView textView;
-    RadioButton firstAns;
-    RadioButton secondAns;
-    RadioButton thirdAns;
-    RadioButton fourthAns;
-    RadioButton fifthAns;
-    RadioButton sixthAns;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_scale_question);
+        setContentView(R.layout.activity_drop_down_menu);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
         //changes questions and answer based on which question users is on
         questionInfo.setQuestionInfo(questionInfo.questionCount);
-        firstAns = findViewById(R.id.zero);
-        secondAns = findViewById(R.id.one);
-        thirdAns = findViewById(R.id.two);
-        fourthAns = findViewById(R.id.three);
-        fifthAns = findViewById(R.id.four);
-        sixthAns = findViewById(R.id.five);
-        radioGroup = findViewById(R.id.scaleChoices);
+        menu = findViewById(R.id.spinner1);
         textView = findViewById(R.id.questionText);
         textView.setText(questionInfo.question);
-        firstAns.setText(questionInfo.answers[0]);
-        secondAns.setText(questionInfo.answers[1]);
-        thirdAns.setText(questionInfo.answers[2]);
-        fourthAns.setText(questionInfo.answers[3]);
-        fifthAns.setText(questionInfo.answers[4]);
-        sixthAns.setText(questionInfo.answers[5]);
 
-        //removes the extra options if number of answers are less than 6
-        RadioButton[] rbArr = {firstAns, secondAns, thirdAns, fourthAns, fifthAns, sixthAns};
-        for(int i = 6; i > questionInfo.numberOfA; i --){
-            rbArr[i-1].setVisibility(View.GONE);
-        }
+        //determines what string list to display onto drop down menu
+        int spinItems = questionInfo.spinnerItemsArrayIndex;
+        ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(DropDownMenuActivity.this,
+                android.R.layout.simple_list_item_1, getResources().getStringArray(questionInfo.spinnerItems[spinItems]));
+        myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        menu.setAdapter(myAdapter);
 
         Button nextButton = findViewById(R.id.nextButton);
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //gives score based on what button was pressed
-                int radioId = radioGroup.getCheckedRadioButtonId();
-                radioButton = findViewById(radioId);
-                if(radioId == R.id.zero){
-                    questionInfo.score += questionInfo.answerValues[0];
-                }
-                else if(radioId == R.id.one){
-                    questionInfo.score += questionInfo.answerValues[1];
-                }
-                else if(radioId == R.id.two){
-                    questionInfo.score += questionInfo.answerValues[2];
-                }
-                else if(radioId == R.id.three){
-                    questionInfo.score += questionInfo.answerValues[3];
-                }
-                else if(radioId == R.id.four){
-                    questionInfo.score += questionInfo.answerValues[4];
-                }
-                else if(radioId == R.id.five){
-                    questionInfo.score += questionInfo.answerValues[5];
-                }
-
-                //gets next question
+                //since the only two drop down menu we have right now are for height and weight, I stored it in arrays
+                //so that we can use it to calculate BMI at the endscreen (ResultActivity)
+                questionInfo.spinnerItemsSelection[questionInfo.spinnerItemsArrayIndex] = menu.getSelectedItemPosition();
                 questionInfo.questionCount++;
                 questionInfo.setQuestionInfo(questionInfo.questionCount);
 
@@ -117,10 +80,5 @@ public class ScaleQuestionActivity extends AppCompatActivity {
         });
     }
 
-    //function to enables next button only after user has selected an answer
-    public void clickedButton(View V){
-        Button nextButton = findViewById(R.id.nextButton);
-        nextButton.setEnabled(true);
-    }
 
 }

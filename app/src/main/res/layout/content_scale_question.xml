@@ -14,6 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/scaleChoices"
         android:layout_centerHorizontal="true"
+        android:gravity="center"
         android:layout_marginBottom="27sp"
         android:text="(question)"
         android:textSize="20sp"/>
@@ -28,37 +29,43 @@
             android:id="@+id/zero"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="0" />
+            android:text="0"
+            android:onClick="clickedButton"/>
 
         <RadioButton
             android:id="@+id/one"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="1" />
+            android:text="1"
+            android:onClick="clickedButton"/>
 
         <RadioButton
             android:id="@+id/two"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="2" />
+            android:text="2"
+            android:onClick="clickedButton"/>
 
         <RadioButton
             android:id="@+id/three"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="3" />
+            android:text="3"
+            android:onClick="clickedButton"/>
 
         <RadioButton
             android:id="@+id/four"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="4" />
+            android:text="4"
+            android:onClick="clickedButton"/>
 
         <RadioButton
             android:id="@+id/five"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="5" />
+            android:text="5"
+            android:onClick="clickedButton"/>
     </RadioGroup>
 
     <Button
@@ -68,5 +75,6 @@
         android:layout_below="@+id/scaleChoices"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30sp"
+        android:enabled="false"
         android:text="Next"/>
 </RelativeLayout>
