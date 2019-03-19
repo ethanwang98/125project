@@ -6,15 +6,18 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.content.Intent;
 import android.widget.TextView;
+import android.widget.ListView;
 
 import org.w3c.dom.Text;
 
 public class ResultActivity extends AppCompatActivity {
 
     TextView textView;
+    ListView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,14 +47,11 @@ public class ResultActivity extends AppCompatActivity {
             textView.setText("LOW RISK OF DIABETES");
         }
 
-        FloatingActionButton fab = findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+//        listView = findViewById(R.id.generalAdviceText);
+//        ArrayAdapter<String> adapter = new ArrayAdapter<String>(ResultActivity.this,
+//                android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.generalGuidance));
+//
+//        listView.setAdapter(adapter);
 
         //reset questionCount and score
         questionInfo.questionCount = 1;
@@ -63,6 +63,15 @@ public class ResultActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
+            }
+        });
+
+        FloatingActionButton fab = findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                        .setAction("Action", null).show();
             }
         });
     }

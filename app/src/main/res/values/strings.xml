@@ -4,10 +4,10 @@
     <string name="Main_Menu_Second_button">Answer a Questionnaire</string>
     <string name="app_name">125project</string>
     <string name="action_settings">Settings</string>
-    <string name="title_activity_result">ResultActivity</string>
-    <string name="title_activity_scale_question">ScaleQuestionActivity</string>
-    <string name="title_activity_yes_no">YesNoActivity</string>
-    <string name="title_activity_drop_down_menu">DropDownMenuActivity</string>
+    <string name="title_activity_result">125project</string>
+    <string name="title_activity_scale_question">125project</string>
+    <string name="title_activity_yes_no">125project</string>
+    <string name="title_activity_drop_down_menu">125project</string>
 
     <string-array name="spinDefault">
         <item>List</item>
@@ -40,5 +40,15 @@
         <item>128-152 lbs. (58-68kg)</item>
         <item>153-203 lbs. (69-91kg)</item>
         <item>204+ lbs. (92kg)</item>
+    </string-array>
+
+    <string-array name="generalGuidance">
+        <item>People should watch their weight and exercise on a regular basis to help prevent the development of type 2 diabetes</item>
+        <item>Exercise is beneficial, even without weight loss, in the prevention of diabetes.</item>
+        <item>Smoking is harmful in many ways including increasing the risk of cancer and heart disease.
+            It also increases the risk of developing type 2 diabetes.</item>
+        <item>Diet is important because it helps with weight loss. There is no single recommended diabetes
+            prevention diet, but following a sound nutrition plan and maintaining a healthy weight are
+            important steps in preventing the disease.</item>
     </string-array>
 </resources>
