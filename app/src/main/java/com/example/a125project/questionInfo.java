@@ -179,6 +179,7 @@ public class questionInfo extends AppCompatActivity {
                 answerValues[2] = (float)0.8;
                 answerValues[3] = (float)0.4;
                 answerValues[4] = 0;
+                break;
             case 11:
                 type = questionType.SCALE;
                 question = "You have trouble paying attention or sometimes feel confused";
@@ -193,6 +194,7 @@ public class questionInfo extends AppCompatActivity {
                 answerValues[2] = 1;
                 answerValues[3] = (float)0.5;
                 answerValues[4] = 0;
+                break;
             case 12:
                 type = questionType.SCALE;
                 question = "Your breath smells fruity";
@@ -207,6 +209,7 @@ public class questionInfo extends AppCompatActivity {
                 answerValues[2] = (float)1.2;
                 answerValues[3] = (float)0.6;
                 answerValues[4] = 0;
+                break;
             case 13:
                 type = questionType.SCALE;
                 question = "You experience stomach pain for no apparent reason";
@@ -221,6 +224,7 @@ public class questionInfo extends AppCompatActivity {
                 answerValues[2] = 1;
                 answerValues[3] = (float)0.5;
                 answerValues[4] = 0;
+                break;
             case 14:
                 type = questionType.SCALE;
                 question = "You feel the need to urinate often";
@@ -235,6 +239,7 @@ public class questionInfo extends AppCompatActivity {
                 answerValues[2] = 1;
                 answerValues[3] = (float)0.5;
                 answerValues[4] = 0;
+                break;
             case 15:
                 type = questionType.SCALE;
                 question = "You tend to get irritated or experience mood swings";
@@ -249,6 +254,7 @@ public class questionInfo extends AppCompatActivity {
                 answerValues[2] = (float)0.6;
                 answerValues[3] = (float)0.3;
                 answerValues[4] = 0;
+                break;
             case 16:
                 type = questionType.SCALE;
                 question = "Your mouth often feels dry";
@@ -263,6 +269,7 @@ public class questionInfo extends AppCompatActivity {
                 answerValues[2] = (float)0.6;
                 answerValues[3] = (float)0.3;
                 answerValues[4] = 0;
+                break;
             case 17:
                 type = questionType.SCALE;
                 question = "You are not physically active";
@@ -277,6 +284,7 @@ public class questionInfo extends AppCompatActivity {
                 answerValues[2] = 1;
                 answerValues[3] = (float)0.5;
                 answerValues[4] = 0;
+                break;
             case 18:
                 type = questionType.SCALE;
                 question = "You sweat while not physically active";
@@ -291,6 +299,7 @@ public class questionInfo extends AppCompatActivity {
                 answerValues[2] = (float)0.4;
                 answerValues[3] = (float)0.2;
                 answerValues[4] = 0;
+                break;
             case 19:
                 type = questionType.SCALE;
                 question = "Your diet includes a lot of high cholesterol and/or foods high in sugar levels";
@@ -305,6 +314,7 @@ public class questionInfo extends AppCompatActivity {
                 answerValues[2] = 1;
                 answerValues[3] = (float)0.5;
                 answerValues[4] = 0;
+                break;
             case 20:
                 type = questionType.SCALE;
                 question = "You experience numbness or tingling in the feet or hands";
@@ -319,6 +329,7 @@ public class questionInfo extends AppCompatActivity {
                 answerValues[2] = 1;
                 answerValues[3] = (float)0.5;
                 answerValues[4] = 0;
+                break;
             case 21:
                 type = questionType.SCALE;
                 question = "You have low levels of HDL(good cholesterol)";
@@ -333,6 +344,7 @@ public class questionInfo extends AppCompatActivity {
                 answerValues[2] = 1;
                 answerValues[3] = (float)0.5;
                 answerValues[4] = 0;
+                break;
             case 22:
                 type = questionType.SCALE;
                 question = "You notice patches of dark, velvety skin around neck or armpits";
@@ -347,6 +359,7 @@ public class questionInfo extends AppCompatActivity {
                 answerValues[2] = (float)1.4;
                 answerValues[3] = (float)0.7;
                 answerValues[4] = 0;
+                break;
             case 23:
                 type = questionType.SCALE;
                 question = "Your cuts/sores take long to recover";
@@ -361,6 +374,7 @@ public class questionInfo extends AppCompatActivity {
                 answerValues[2] = (float)0.6;
                 answerValues[3] = (float)0.3;
                 answerValues[4] = 0;
+                break;
             case 24:
                 type = questionType.SCALE;
                 question = "You experience headaches for no apparent reason";
@@ -375,6 +389,7 @@ public class questionInfo extends AppCompatActivity {
                 answerValues[2] = (float)0.8;
                 answerValues[3] = (float)0.4;
                 answerValues[4] = 0;
+                break;
             case 25:
                 type = questionType.SCALE;
                 question = "You get frequent infections";
@@ -389,6 +404,7 @@ public class questionInfo extends AppCompatActivity {
                 answerValues[2] = (float)0.4;
                 answerValues[3] = (float)0.2;
                 answerValues[4] = 0;
+                break;
             case 26:
                 type = questionType.SCALE;
                 question = "What is your BMI?";
@@ -401,6 +417,7 @@ public class questionInfo extends AppCompatActivity {
                 answerValues[1] = 0;
                 answerValues[2] = (float)1.5;
                 answerValues[3] = 3;
+                break;
             case 27:
                 type = questionType.SCALE;
                 question = "What best describes your ethnicity?";
@@ -417,6 +434,7 @@ public class questionInfo extends AppCompatActivity {
                 answerValues[3] = 1;
                 answerValues[4] = 1;
                 answerValues[5] = 0;
+                break;
             case 28:
                 type = questionType.YESNO;
                 question = "Do you have a history of heart disease/stroke?";
@@ -424,6 +442,7 @@ public class questionInfo extends AppCompatActivity {
                 answers[1] = "No";
                 answerValues[0] = 2;
                 answerValues[1] = 0;
+                break;
             case 29:
                 type = questionType.YESNO;
                 question = "Did you have a low birthweight? (less than 5 lbs)";
@@ -431,6 +450,7 @@ public class questionInfo extends AppCompatActivity {
                 answers[1] = "No";
                 answerValues[0] = 1;
                 answerValues[1] = 0;
+                break;
             case 30:
                 type = questionType.YESNO;
                 question = "Is your blood pressure higher than 140/90?";
@@ -438,6 +458,7 @@ public class questionInfo extends AppCompatActivity {
                 answers[1] = "No";
                 answerValues[0] = 3;
                 answerValues[1] = 0;
+                break;
             default:
                 type = questionType.DONE;
                 break;
