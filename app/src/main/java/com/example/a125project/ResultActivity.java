@@ -84,11 +84,21 @@ public class ResultActivity extends AppCompatActivity {
             textView.setText("LOW RISK OF DIABETES");
         }
 
-        listView = findViewById(R.id.generalAdviceText);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(ResultActivity.this,
-                android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.generalGuidance));
+        String[] genGuide = getResources().getStringArray(R.array.generalGuidance);
+        StringBuilder builder = new StringBuilder();
+        for (String s: genGuide) {
+            builder.append(s);
+            builder.append("\n\n");
+        }
+        textView = findViewById(R.id.generalAdviceText);
+        textView.setText(builder.toString());
 
-        listView.setAdapter(adapter);
+
+//        listView = findViewById(R.id.generalAdviceText);
+//        ArrayAdapter<String> adapter = new ArrayAdapter<String>(ResultActivity.this,
+//                android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.generalGuidance));
+//
+//        listView.setAdapter(adapter);
 
         //reset questionCount and score
         questionInfo.questionCount = 1;
