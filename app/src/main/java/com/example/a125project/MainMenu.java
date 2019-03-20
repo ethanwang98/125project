@@ -18,18 +18,20 @@ public class MainMenu extends AppCompatActivity {
         see_data_but_txt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //intent is determined by what the next question type is, if there is one
-                Intent intent;
-                if (questionInfo.type == questionInfo.questionType.YESNO) {
-                    intent = new Intent(getApplicationContext(), YesNoActivity.class);
-                } else if (questionInfo.type == questionInfo.questionType.SCALE) {
-                    intent = new Intent(getApplicationContext(), ScaleQuestionActivity.class);
-                } else if (questionInfo.type == questionInfo.questionType.SPINNER) {
-                    intent = new Intent(getApplicationContext(), DropDownMenuActivity.class);
-                } else {
-                    intent = new Intent(getApplicationContext(), ResultActivity.class);
-                }
-                startActivity(intent);
+                Intent startIntent  = new Intent(getApplicationContext(), DataDisplay.class);
+                startActivity(startIntent);
+//                //intent is determined by what the next question type is, if there is one
+//                Intent intent;
+//                if (questionInfo.type == questionInfo.questionType.YESNO) {
+//                    intent = new Intent(getApplicationContext(), YesNoActivity.class);
+//                } else if (questionInfo.type == questionInfo.questionType.SCALE) {
+//                    intent = new Intent(getApplicationContext(), ScaleQuestionActivity.class);
+//                } else if (questionInfo.type == questionInfo.questionType.SPINNER) {
+//                    intent = new Intent(getApplicationContext(), DropDownMenuActivity.class);
+//                } else {
+//                    intent = new Intent(getApplicationContext(), ResultActivity.class);
+//                }
+//                startActivity(intent);
             }
         });
         Button answer_question_btn_txt = findViewById(R.id.QuestionaireBtnText);

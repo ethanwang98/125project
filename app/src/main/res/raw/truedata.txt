@@ -1,0 +1,4 @@
+		Sun	Mon	Tues	Wed	Thurs	Friday	Sat
+Avg. Steps	6714	9423	8155	9716	2248	4535	7621
+Miles Traveled	28.93	27.57	20.59	26.81	27.66	27.81	27.02
+Heart Rate	84	87	94	92	89	85	91

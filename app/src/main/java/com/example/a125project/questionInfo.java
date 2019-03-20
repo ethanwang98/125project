@@ -1,7 +1,6 @@
 package com.example.a125project;
 
 import android.support.v7.app.AppCompatActivity;
-import android.widget.ArrayAdapter;
 
 public class questionInfo extends AppCompatActivity {
     //keeps count of what question user is current on
@@ -436,7 +435,7 @@ public class questionInfo extends AppCompatActivity {
                 answerValues[0] = 1;
                 answerValues[1] = 0;
             default:
-                if ()
+//                if ()
                 type = questionType.DONE;
                 break;
         }
