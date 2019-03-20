@@ -64,6 +64,7 @@ public class ScaleQuestionActivity extends AppCompatActivity {
                 //gives score based on what button was pressed
                 int radioId = radioGroup.getCheckedRadioButtonId();
                 radioButton = findViewById(radioId);
+                questionInfo.answerMap.get("Scale").add(radioId);
                 if(radioId == R.id.zero){
                     questionInfo.score += questionInfo.answerValues[0];
                 }

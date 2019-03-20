@@ -1,6 +1,9 @@
 package com.example.a125project;
 
 import android.support.v7.app.AppCompatActivity;
+import android.widget.ArrayAdapter;
+import java.util.ArrayList;
+import java.util.List;
 
 public class questionInfo extends AppCompatActivity {
     //keeps count of what question user is current on
@@ -19,13 +22,16 @@ public class questionInfo extends AppCompatActivity {
     public static int numberOfA = 6;
 
     //max # of string arrays that we are going to use for drop down menu
-    public static int numberOfSpinnerList = 2;
+    public static int numberOfSpinnerList = 3;
 
     //array to store answer options
     public static String[] answers = new String[numberOfA];
 
     //array to store answer options values for final score calculation
-    public static int[] answerValues = new int[numberOfA];
+    public static float[] answerValues = new float[numberOfA];
+
+    //records and saves all answers along with the type of question
+    public static defaultdict<String, ArrayList<Integer>> answerMap = new defaultdict<String, ArrayList<Integer>>(ArrayList.class);
 
     //current Question's question
     public static String question;
@@ -41,20 +47,20 @@ public class questionInfo extends AppCompatActivity {
         //determines what question user is on and changes the UI accordingly
         switch (questionCount) {
             case 1:
-                type = questionType.SPINNER;
+                type = questionType.SCALE;
                 numberOfA = 4;
                 question = "How old are you?";
                 answers[0] = "4-14 years old";
                 answers[1] = "15-26 years old";
                 answers[2] = "26-44 years old";
                 answers[3] = "45+ years old";
-                answerValues[0] = 0;
-                answerValues[1] = 1;
-                answerValues[2] = 2;
-                answerValues[3] = 3;
+                answerValues[0] = 3;
+                answerValues[1] = 2;
+                answerValues[2] = 1;
+                answerValues[3] = 5;
                 break;
             case 2:
-                type= questionType.YESNO;
+                type = questionType.YESNO;
                 question = "If you have a parent or sibling with diabetes, does he/she have type 1 diabetes?";
                 answers[0] = "Yes";
                 answers[1] = "No";
@@ -66,7 +72,7 @@ public class questionInfo extends AppCompatActivity {
                 question = "If you have a parent or sibling with diabetes, does he/she have type 2 diabetes?";
                 answers[0] = "Yes";
                 answers[1] = "No";
-                answerValues[0] = 1;
+                answerValues[0] = (float)0.5;
                 answerValues[1] = 0;
                 break;
             case 4:
@@ -78,11 +84,11 @@ public class questionInfo extends AppCompatActivity {
                 answers[2] = "Neutral";
                 answers[3] = "Disagree";
                 answers[4] = "Strongly Disagree";
-                answerValues[0] = 0;
-                answerValues[1] = 1;
-                answerValues[2] = 2;
-                answerValues[3] = 3;
-                answerValues[4] = 4;
+                answerValues[0] = 2;
+                answerValues[1] = (float)1.5;
+                answerValues[2] = 1;
+                answerValues[3] = (float)0.5;
+                answerValues[4] = 0;
                 break;
             case 5:
                 type = questionType.SCALE;
@@ -93,11 +99,11 @@ public class questionInfo extends AppCompatActivity {
                 answers[2] = "Neutral";
                 answers[3] = "Disagree";
                 answers[4] = "Strongly Disagree";
-                answerValues[0] = 0;
-                answerValues[1] = 1;
-                answerValues[2] = 2;
-                answerValues[3] = 3;
-                answerValues[4] = 4;
+                answerValues[0] = (float)1.2;
+                answerValues[1] = (float)0.9;
+                answerValues[2] = (float)0.6;
+                answerValues[3] = (float)0.3;
+                answerValues[4] = 0;
                 break;
             case 6:
                 type = questionType.SCALE;
@@ -108,11 +114,11 @@ public class questionInfo extends AppCompatActivity {
                 answers[2] = "Neutral";
                 answers[3] = "Disagree";
                 answers[4] = "Strongly Disagree";
-                answerValues[0] = 0;
-                answerValues[1] = 1;
-                answerValues[2] = 2;
-                answerValues[3] = 3;
-                answerValues[4] = 4;
+                answerValues[0] = (float)1.2;
+                answerValues[1] = (float)0.9;
+                answerValues[2] = (float)0.6;
+                answerValues[3] = (float)0.3;
+                answerValues[4] = 0;
                 break;
             case 7:
                 type = questionType.SCALE;
@@ -123,11 +129,11 @@ public class questionInfo extends AppCompatActivity {
                 answers[2] = "Neutral";
                 answers[3] = "Disagree";
                 answers[4] = "Strongly Disagree";
-                answerValues[0] = 0;
-                answerValues[1] = 1;
-                answerValues[2] = 2;
-                answerValues[3] = 3;
-                answerValues[4] = 4;
+                answerValues[0] = (float)1.6;
+                answerValues[1] = (float)1.2;
+                answerValues[2] = (float)0.8;
+                answerValues[3] = (float)0.4;
+                answerValues[4] = 0;
                 break;
             case 8:
                 type = questionType.SCALE;
@@ -138,11 +144,11 @@ public class questionInfo extends AppCompatActivity {
                 answers[2] = "Neutral";
                 answers[3] = "Disagree";
                 answers[4] = "Strongly Disagree";
-                answerValues[0] = 0;
-                answerValues[1] = 1;
-                answerValues[2] = 2;
-                answerValues[3] = 3;
-                answerValues[4] = 4;
+                answerValues[0] = (float)1.6;
+                answerValues[1] = (float)1.2;
+                answerValues[2] = (float)0.8;
+                answerValues[3] = (float)0.4;
+                answerValues[4] = 0;
                 break;
             case 9:
                 type = questionType.SCALE;
@@ -153,11 +159,11 @@ public class questionInfo extends AppCompatActivity {
                 answers[2] = "Neutral";
                 answers[3] = "Disagree";
                 answers[4] = "Strongly Disagree";
-                answerValues[0] = 0;
-                answerValues[1] = 1;
-                answerValues[2] = 2;
-                answerValues[3] = 3;
-                answerValues[4] = 4;
+                answerValues[0] = (float)0.8;
+                answerValues[1] = (float)0.6;
+                answerValues[2] = (float)0.4;
+                answerValues[3] = (float)0.2;
+                answerValues[4] = 0;
                 break;
             case 10:
                 type = questionType.SCALE;
@@ -168,11 +174,11 @@ public class questionInfo extends AppCompatActivity {
                 answers[2] = "Neutral";
                 answers[3] = "Disagree";
                 answers[4] = "Strongly Disagree";
-                answerValues[0] = 0;
-                answerValues[1] = 1;
-                answerValues[2] = 2;
-                answerValues[3] = 3;
-                answerValues[4] = 4;
+                answerValues[0] = (float)1.6;
+                answerValues[1] = (float)1.2;
+                answerValues[2] = (float)0.8;
+                answerValues[3] = (float)0.4;
+                answerValues[4] = 0;
             case 11:
                 type = questionType.SCALE;
                 question = "You have trouble paying attention or sometimes feel confused";
@@ -182,11 +188,11 @@ public class questionInfo extends AppCompatActivity {
                 answers[2] = "Neutral";
                 answers[3] = "Disagree";
                 answers[4] = "Strongly Disagree";
-                answerValues[0] = 0;
-                answerValues[1] = 1;
-                answerValues[2] = 2;
-                answerValues[3] = 3;
-                answerValues[4] = 4;
+                answerValues[0] = 2;
+                answerValues[1] = (float)1.5;
+                answerValues[2] = 1;
+                answerValues[3] = (float)0.5;
+                answerValues[4] = 0;
             case 12:
                 type = questionType.SCALE;
                 question = "Your breath smells fruity";
@@ -196,11 +202,11 @@ public class questionInfo extends AppCompatActivity {
                 answers[2] = "Neutral";
                 answers[3] = "Disagree";
                 answers[4] = "Strongly Disagree";
-                answerValues[0] = 0;
-                answerValues[1] = 1;
-                answerValues[2] = 2;
-                answerValues[3] = 3;
-                answerValues[4] = 4;
+                answerValues[0] = (float)2.4;
+                answerValues[1] = (float)1.8;
+                answerValues[2] = (float)1.2;
+                answerValues[3] = (float)0.6;
+                answerValues[4] = 0;
             case 13:
                 type = questionType.SCALE;
                 question = "You experience stomach pain for no apparent reason";
@@ -210,11 +216,11 @@ public class questionInfo extends AppCompatActivity {
                 answers[2] = "Neutral";
                 answers[3] = "Disagree";
                 answers[4] = "Strongly Disagree";
-                answerValues[0] = 0;
-                answerValues[1] = 1;
-                answerValues[2] = 2;
-                answerValues[3] = 3;
-                answerValues[4] = 4;
+                answerValues[0] = 2;
+                answerValues[1] = (float)1.5;
+                answerValues[2] = 1;
+                answerValues[3] = (float)0.5;
+                answerValues[4] = 0;
             case 14:
                 type = questionType.SCALE;
                 question = "You feel the need to urinate often";
@@ -224,11 +230,11 @@ public class questionInfo extends AppCompatActivity {
                 answers[2] = "Neutral";
                 answers[3] = "Disagree";
                 answers[4] = "Strongly Disagree";
-                answerValues[0] = 0;
-                answerValues[1] = 1;
-                answerValues[2] = 2;
-                answerValues[3] = 3;
-                answerValues[4] = 4;
+                answerValues[0] = 2;
+                answerValues[1] = (float)1.5;
+                answerValues[2] = 1;
+                answerValues[3] = (float)0.5;
+                answerValues[4] = 0;
             case 15:
                 type = questionType.SCALE;
                 question = "You tend to get irritated or experience mood swings";
@@ -238,11 +244,11 @@ public class questionInfo extends AppCompatActivity {
                 answers[2] = "Neutral";
                 answers[3] = "Disagree";
                 answers[4] = "Strongly Disagree";
-                answerValues[0] = 0;
-                answerValues[1] = 1;
-                answerValues[2] = 2;
-                answerValues[3] = 3;
-                answerValues[4] = 4;
+                answerValues[0] = (float)1.2;
+                answerValues[1] = (float)0.9;
+                answerValues[2] = (float)0.6;
+                answerValues[3] = (float)0.3;
+                answerValues[4] = 0;
             case 16:
                 type = questionType.SCALE;
                 question = "Your mouth often feels dry";
@@ -252,11 +258,11 @@ public class questionInfo extends AppCompatActivity {
                 answers[2] = "Neutral";
                 answers[3] = "Disagree";
                 answers[4] = "Strongly Disagree";
-                answerValues[0] = 0;
-                answerValues[1] = 1;
-                answerValues[2] = 2;
-                answerValues[3] = 3;
-                answerValues[4] = 4;
+                answerValues[0] = (float)1.2;
+                answerValues[1] = (float)0.9;
+                answerValues[2] = (float)0.6;
+                answerValues[3] = (float)0.3;
+                answerValues[4] = 0;
             case 17:
                 type = questionType.SCALE;
                 question = "You are not physically active";
@@ -266,11 +272,11 @@ public class questionInfo extends AppCompatActivity {
                 answers[2] = "Neutral";
                 answers[3] = "Disagree";
                 answers[4] = "Strongly Disagree";
-                answerValues[0] = 0;
-                answerValues[1] = 1;
-                answerValues[2] = 2;
-                answerValues[3] = 3;
-                answerValues[4] = 4;
+                answerValues[0] = 2;
+                answerValues[1] = (float)1.5;
+                answerValues[2] = 1;
+                answerValues[3] = (float)0.5;
+                answerValues[4] = 0;
             case 18:
                 type = questionType.SCALE;
                 question = "You sweat while not physically active";
@@ -280,11 +286,11 @@ public class questionInfo extends AppCompatActivity {
                 answers[2] = "Neutral";
                 answers[3] = "Disagree";
                 answers[4] = "Strongly Disagree";
-                answerValues[0] = 0;
-                answerValues[1] = 1;
-                answerValues[2] = 2;
-                answerValues[3] = 3;
-                answerValues[4] = 4;
+                answerValues[0] = (float)0.8;
+                answerValues[1] = (float)0.6;
+                answerValues[2] = (float)0.4;
+                answerValues[3] = (float)0.2;
+                answerValues[4] = 0;
             case 19:
                 type = questionType.SCALE;
                 question = "Your diet includes a lot of high cholesterol and/or foods high in sugar levels";
@@ -294,11 +300,11 @@ public class questionInfo extends AppCompatActivity {
                 answers[2] = "Neutral";
                 answers[3] = "Disagree";
                 answers[4] = "Strongly Disagree";
-                answerValues[0] = 0;
-                answerValues[1] = 1;
-                answerValues[2] = 2;
-                answerValues[3] = 3;
-                answerValues[4] = 4;
+                answerValues[0] = 2;
+                answerValues[1] = (float)1.5;
+                answerValues[2] = 1;
+                answerValues[3] = (float)0.5;
+                answerValues[4] = 0;
             case 20:
                 type = questionType.SCALE;
                 question = "You experience numbness or tingling in the feet or hands";
@@ -308,11 +314,11 @@ public class questionInfo extends AppCompatActivity {
                 answers[2] = "Neutral";
                 answers[3] = "Disagree";
                 answers[4] = "Strongly Disagree";
-                answerValues[0] = 0;
-                answerValues[1] = 1;
-                answerValues[2] = 2;
-                answerValues[3] = 3;
-                answerValues[4] = 4;
+                answerValues[0] = 2;
+                answerValues[1] = (float)1.5;
+                answerValues[2] = 1;
+                answerValues[3] = (float)0.5;
+                answerValues[4] = 0;
             case 21:
                 type = questionType.SCALE;
                 question = "You have low levels of HDL(good cholesterol)";
@@ -322,11 +328,11 @@ public class questionInfo extends AppCompatActivity {
                 answers[2] = "Neutral";
                 answers[3] = "Disagree";
                 answers[4] = "Strongly Disagree";
-                answerValues[0] = 0;
-                answerValues[1] = 1;
-                answerValues[2] = 2;
-                answerValues[3] = 3;
-                answerValues[4] = 4;
+                answerValues[0] = 2;
+                answerValues[1] = (float)1.5;
+                answerValues[2] = 1;
+                answerValues[3] = (float)0.5;
+                answerValues[4] = 0;
             case 22:
                 type = questionType.SCALE;
                 question = "You notice patches of dark, velvety skin around neck or armpits";
@@ -336,11 +342,11 @@ public class questionInfo extends AppCompatActivity {
                 answers[2] = "Neutral";
                 answers[3] = "Disagree";
                 answers[4] = "Strongly Disagree";
-                answerValues[0] = 0;
-                answerValues[1] = 1;
-                answerValues[2] = 2;
-                answerValues[3] = 3;
-                answerValues[4] = 4;
+                answerValues[0] = (float)2.8;
+                answerValues[1] = (float)2.1;
+                answerValues[2] = (float)1.4;
+                answerValues[3] = (float)0.7;
+                answerValues[4] = 0;
             case 23:
                 type = questionType.SCALE;
                 question = "Your cuts/sores take long to recover";
@@ -350,11 +356,11 @@ public class questionInfo extends AppCompatActivity {
                 answers[2] = "Neutral";
                 answers[3] = "Disagree";
                 answers[4] = "Strongly Disagree";
-                answerValues[0] = 0;
-                answerValues[1] = 1;
-                answerValues[2] = 2;
-                answerValues[3] = 3;
-                answerValues[4] = 4;
+                answerValues[0] = (float)1.2;
+                answerValues[1] = (float)0.9;
+                answerValues[2] = (float)0.6;
+                answerValues[3] = (float)0.3;
+                answerValues[4] = 0;
             case 24:
                 type = questionType.SCALE;
                 question = "You experience headaches for no apparent reason";
@@ -364,11 +370,11 @@ public class questionInfo extends AppCompatActivity {
                 answers[2] = "Neutral";
                 answers[3] = "Disagree";
                 answers[4] = "Strongly Disagree";
-                answerValues[0] = 0;
-                answerValues[1] = 1;
-                answerValues[2] = 2;
-                answerValues[3] = 3;
-                answerValues[4] = 4;
+                answerValues[0] = (float)1.6;
+                answerValues[1] = (float)1.2;
+                answerValues[2] = (float)0.8;
+                answerValues[3] = (float)0.4;
+                answerValues[4] = 0;
             case 25:
                 type = questionType.SCALE;
                 question = "You get frequent infections";
@@ -378,13 +384,13 @@ public class questionInfo extends AppCompatActivity {
                 answers[2] = "Neutral";
                 answers[3] = "Disagree";
                 answers[4] = "Strongly Disagree";
-                answerValues[0] = 0;
-                answerValues[1] = 1;
-                answerValues[2] = 2;
-                answerValues[3] = 3;
-                answerValues[4] = 4;
+                answerValues[0] = (float)0.8;
+                answerValues[1] = (float)0.6;
+                answerValues[2] = (float)0.4;
+                answerValues[3] = (float)0.2;
+                answerValues[4] = 0;
             case 26:
-                type = questionType.SPINNER;
+                type = questionType.SCALE;
                 question = "What is your BMI?";
                 numberOfA = 4;
                 answers[0] = "Below 19";
@@ -392,33 +398,31 @@ public class questionInfo extends AppCompatActivity {
                 answers[2] = "26-30";
                 answers[3] = "30+";
                 answerValues[0] = 0;
-                answerValues[1] = 1;
-                answerValues[2] = 2;
+                answerValues[1] = 0;
+                answerValues[2] = (float)1.5;
                 answerValues[3] = 3;
             case 27:
-                type = questionType.SPINNER;
+                type = questionType.SCALE;
                 question = "What best describes your ethnicity?";
-                numberOfA = 7;
+                numberOfA = 6;
                 answers[0] = "Asian American";
                 answers[1] = "African American";
-                answers[2] = "Native Alaskan";
-                answers[3] = "Native Hawaiian";
-                answers[4] = "Pacific Islander";
-                answers[5] = "Latino";
-                answers[6] = "Other";
-                answerValues[0] = 0;
+                answers[2] = "American Indian";
+                answers[3] = "Pacific Islander";
+                answers[4] = "Latino";
+                answers[5] = "Other";
+                answerValues[0] = 1;
                 answerValues[1] = 1;
-                answerValues[2] = 2;
-                answerValues[3] = 3;
-                answerValues[4] = 4;
-                answerValues[5] = 5;
-                answerValues[6] = 6;
+                answerValues[2] = 1;
+                answerValues[3] = 1;
+                answerValues[4] = 1;
+                answerValues[5] = 0;
             case 28:
                 type = questionType.YESNO;
                 question = "Do you have a history of heart disease/stroke?";
                 answers[0] = "Yes";
                 answers[1] = "No";
-                answerValues[0] = 1;
+                answerValues[0] = 2;
                 answerValues[1] = 0;
             case 29:
                 type = questionType.YESNO;
@@ -432,10 +436,9 @@ public class questionInfo extends AppCompatActivity {
                 question = "Is your blood pressure higher than 140/90?";
                 answers[0] = "Yes";
                 answers[1] = "No";
-                answerValues[0] = 1;
+                answerValues[0] = 3;
                 answerValues[1] = 0;
             default:
-//                if ()
                 type = questionType.DONE;
                 break;
         }

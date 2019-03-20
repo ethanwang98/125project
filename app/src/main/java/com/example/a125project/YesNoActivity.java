@@ -44,6 +44,7 @@ public class YesNoActivity extends AppCompatActivity {
                 //gives score based on what button was pressed
                 int radioId = radioGroup.getCheckedRadioButtonId();
                 radioButton = findViewById(radioId);
+                questionInfo.answerMap.get("YN").add(radioId);
                 if(radioId == R.id.first){
                     questionInfo.score += questionInfo.answerValues[0];
                     //special if-statement only for question 1

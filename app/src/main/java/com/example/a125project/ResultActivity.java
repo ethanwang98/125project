@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.ListView;
 
 import org.w3c.dom.Text;
+import java.util.ArrayList;
 
 public class ResultActivity extends AppCompatActivity {
 
@@ -26,22 +27,58 @@ public class ResultActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        //calculate pseudo BMI, rough estimate of BMI
-        if((questionInfo.spinnerItemsSelection[0] <= 1 && questionInfo.spinnerItemsSelection[1] >= 0) ||
-                (questionInfo.spinnerItemsSelection[0] <= 7 && questionInfo.spinnerItemsSelection[1] >= 2) ||
-                (questionInfo.spinnerItemsSelection[1] >= 3)){
-            questionInfo.score++;
+        defaultdict<String, ArrayList<Integer>> answers = questionInfo.answerMap;
+        int count = 0;
+        boolean young_age = false;
+        boolean old_age = false;
+        for (int answer : answers.get("Scale")){
+            if (answer < 2){
+                count += 1;
+            }
         }
+        if (answers.get("Scale").get(0) < 2){
+            young_age = true;
+        }
+        else if (answers.get("Scale").get(0) == 3){
+            old_age = true;
+        }
+        if (count >= 2 && young_age == true)
+            questionInfo.score += 10;
+        else if (count >= 2 && old_age == true){
+            count = 0;
+            if (answers.get("YN").get(2) == 0)
+                count += 1;
+            if (answers.get("SCALE").get(2) < 2)
+                count += 1;
+            if (answers.get("SCALE").get(15) < 2)
+                count += 1;
+            if (answers.get("SCALE").get(19) < 2)
+                count += 1;
+            if (answers.get("SCALE").get(20) < 2)
+                count += 1;
+            if (answers.get("SCALE").get(25) < 5)
+                count += 1;
+            if (answers.get("YN").get(3) == 0)
+                count += 1;
+            if (answers.get("YN").get(5) == 0)
+                count += 1;
+            if (count >= 2)
+                questionInfo.score += 10;
+        }
+
 
         //score
         textView = findViewById(R.id.scoreText);
-        String result = questionInfo.score + " / 10";
+        String result = Float.toString(questionInfo.score);
         textView.setText(result);
 
         //score evaluation result
         textView = findViewById(R.id.resultStatement);
-        if(questionInfo.score >= 5){
+        if(questionInfo.score >= 30){
             textView.setText("HIGH RISK OF DIABETES");
+        }
+        else if (questionInfo.score >= 15 && questionInfo.score < 30){
+            textView.setText("MODERATE RISK OF DIABETES");
         }
         else{
             textView.setText("LOW RISK OF DIABETES");
